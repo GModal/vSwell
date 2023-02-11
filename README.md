@@ -6,7 +6,7 @@ Markdown
 
 *vSwell* is a volume envelope audio effect plugin. The effect can be triggered by an audio signal, CV or a MIDI notein. 
 
-The effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can act as a trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other sounds can serve as the trigger, also.
+The effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can act as a trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other unrelated sounds can serve as the trigger, also.
 
 Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux environments. With a working hvcc environment, the patch *should* compile for other systems.
 
@@ -41,7 +41,7 @@ Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux envi
 
 ### Envelope Terminology
 
-vSwell uses the terms outlined on the graphic below for envelopes. This is largely because Heavy (hvcc) only organizes parameters alphabetically.
+vSwell uses the terms outlined on the graphic below for envelopes. The choice of terms is largely dictated by the Heavy (hvcc) compiler, as it only organizes parameters alphabetically.
 
 ![Shape param](extra/envdefs2.png)
 
@@ -56,9 +56,9 @@ vSwell uses the terms outlined on the graphic below for envelopes. This is large
 
 ### Tips
 
-   * ANY MIDI noteon (with non-zero velocity) sent to the MIDI input port will trigger the envelope
+   * ANY MIDI noteon (with non-zero velocity) sent to the MIDI input port will trigger the envelope.
 
-   * Release fades to the SubEnvelope level
+   * Release fades to the SubEnvelope level.
 
    * Setting the SubEnv Level above 0.1 and adjusting the envelope to slowly raise the level can create an effect similar to compression. It's not really compression *per se*, but it sounds cool (adding reverb also is cool).
 
@@ -75,7 +75,7 @@ Setting **Attack Level** and **Mid Level** above 1.0 AND the **Shape** parameter
 
 vSwell is based on a Pure Data patch, and built with the Heavy (hvcc) Pd compiler and the DISTRHO Plugin Framework.
 
-This plugin was inspired by Pierre Massat's cool 'GuitarExtended' blog, circa 2012, specifically the "Bold As Love" patch. However, that patch doesn't encorporate a **schmitt trigger**, some form of which is *de rigueur* for audio-triggered FX. It's possible PureData didn't include the [threshold~] object at that time. 
+This plugin was inspired by Pierre Massat's cool 'GuitarExtended' blog, circa 2012, specifically the "Bold As Love" patch. However, that patch doesn't encorporate a **schmitt trigger**, some form of which is *de rigueur* for audio-triggered FX.
 
 Unfortunately, the Heavy compiler doesn't include [threshold~], so I included a custom *schmitt trigger* abstraction.
 
