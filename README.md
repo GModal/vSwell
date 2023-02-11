@@ -34,6 +34,8 @@ Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux envi
    * Threshold Low
       * db level BELOW the High Threshold where the effect resets for a new trigger
       * REPEAT: this value is *subtracted* from the Threshold High for the low threshold
+   * Trigger Delay
+      * Delay before an envelope begins, after a trigger event. A longer delay can reduce artifacts at the start of an envelope
    * Trigger EXT
       * An external trigger parameter, like a CV
    * Trigger by audio ON
@@ -98,10 +100,12 @@ The build version (Makefile) includes a simple installation script, for local (u
 
 ### Building vSwell
 
-Install the **heavy** compiler:
+- Install the **heavy** compiler:
 ```
 $ pip3 install hvcc
 ```
+Instructions for installing hvcc directly (not with the python installer) can be found on the repository (the link can be found above).
+
 Clone the vSwell source (and the DISTHRO Plugin Framework):
 
 ```
