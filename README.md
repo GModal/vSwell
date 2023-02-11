@@ -6,7 +6,7 @@ Markdown
 
 *vSwell* is a volume envelope audio effect plugin. The effect can be triggered by an audio signal, CV or a MIDI notein. 
 
-The effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can be the trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other sounds can serve as the trigger, also.
+The effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can act as a trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other sounds can serve as the trigger, also.
 
 Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux environments. With a working hvcc environment, the patch *should* compile for other systems.
 
