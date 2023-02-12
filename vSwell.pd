@@ -54,8 +54,8 @@
 #X obj 213 69 lop~ 500;
 #X obj 313 275 r Trigger_Delay @hv_param 0 50 2;
 #X obj 313 302 + 3;
-#X obj 64 120 delwrite~ \$0-swell 6;
-#X obj 64 149 delread~ \$0-swell 6;
+#X obj 64 120 delwrite~ \$0-swell 8;
+#X obj 64 149 delread~ \$0-swell 8;
 #X connect 0 0 6 0;
 #X connect 1 0 43 0;
 #X connect 1 1 18 0;

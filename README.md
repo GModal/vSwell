@@ -43,7 +43,7 @@ Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux envi
 
 ### Envelope Terminology
 
-vSwell uses the terms outlined on the graphic below for envelopes. The choice of terms is largely dictated by the Heavy (hvcc) compiler, as it only organizes parameters alphabetically.
+vSwell uses the terms outlined on the graphic below for envelopes. The choice of terms is largely dictated by the Heavy (hvcc) compiler, as it only organizes parameters alphabetically. While relatively self-explanatory, here's a visual guide:
 
 ![Shape param](extra/envdefs2.png)
 
