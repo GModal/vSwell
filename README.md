@@ -4,11 +4,24 @@ Markdown
 
 ## vSwell
 
-*vSwell* is a volume envelope audio effect plugin. The effect can be triggered by an audio signal, CV or a MIDI notein. 
+*vSwell* is a volume envelope audio effect plugin. The effect can be triggered by an audio signal, CV or a MIDI notein.
 
-The effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can act as a trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other unrelated sounds can serve as the trigger, also.
+The plugin is provided in two versions:
+
+   * vSwell 
+      * Mono, with a separate trigger input
+   * vSwellST
+      * Stereo, with selectable trigger channels
 
 Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux environments. With a working hvcc environment, the patch *should* compile for other systems.
+
+### Mono vs. Stereo
+
+On the mono version the effect signal input is separate from the trigger signal input. This is *mostly* so alternative signal dynamics can act as a trigger (a fuzz can run through the effect, but the unboosted "clean" signal can be the trigger). However, other unrelated sounds can serve as the trigger, also.
+
+The stereo version can select either channel (or both, or neither) as the trigger, and both channels have the envelope applied.
+
+The mono version doesn't always work well with DAWs or other track-oriented applications. Two inputs and one output is more difficult to integrate into an automatic interface.
 
 ### Parameters
 
@@ -34,12 +47,26 @@ Plugins are provided in LV2, VST, VST3 and CLAP formats, compiled for Linux envi
    * Threshold Low
       * db level BELOW the High Threshold where the effect resets for a new trigger
       * REPEAT: this value is *subtracted* from the Threshold High for the low threshold
+   * Threshold Strict
+      * vSwell has some triggering enhancements, and selecting this turns them OFF. The trigger inputs in "strict" mode will more closely follow the RMS value of the *Threshold High* setting.
    * Trigger Delay
       * Delay before an envelope begins, after a trigger event. A longer delay can reduce artifacts at the start of an envelope
    * Trigger EXT
       * An external trigger parameter, like a CV
-   * Trigger by audio ON
+
+#### vSwell only
+
+   * Trigger by audio ON (Mono only)
       * If ON, the audio trigger is active. Turn this off if only an external or MIDI trigger is needed
+
+#### vSwellST only
+
+   * Trigger Left (Stereo only)
+      * If ON, the audio trigger is active on the Left channel
+      * Turn BOTH left and right off for external trigger only.
+   * Trigger Right (Stereo only)
+      * If ON, the audio trigger is active on the Right channel
+      * Turn BOTH left and right off for external trigger only.
 
 ### Envelope Terminology
 
@@ -61,6 +88,8 @@ vSwell uses the terms outlined on the graphic below for envelopes. The choice of
    * ANY MIDI noteon (with non-zero velocity) sent to the MIDI input port will trigger the envelope.
 
    * Release fades to the SubEnvelope level.
+
+   * Higher settings for *Threshold High* raise the threshold, and make triggering less likely. Higher threshold == less sensitive. *Threshold Low* is the # of decibels **below** *Threshold High* at which the trigger resets. I.E., the signal must drop by this amount before a new trigger event can occur.
 
    * Setting the SubEnv Level above 0.1 and adjusting the envelope to slowly raise the level can create an effect similar to compression. It's not really compression *per se*, but it sounds cool (adding reverb also is cool).
 

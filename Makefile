@@ -1,7 +1,7 @@
 
 all: hvcc plugins
 
-PLUGIN = vSwell
+PLUGIN = vSwell vSwellST
 
 DEST_LV2 = .lv2
 DEST_VST = .vst
@@ -20,13 +20,13 @@ binmove:
 	$(foreach var, $(PLUGIN), mv $(var)/bin/* bin/;)
 
 install:
-	rm -rf $(HM)$(DEST_LV2)/$(PLUGIN).lv2
-	cp -r $(PLUGIN)/bin/$(PLUGIN).lv2 $(HM)$(DEST_LV2)/
-	rm -rf $(HM)$(DEST_VST)/$(PLUGIN)-vst.so
-	cp -r $(PLUGIN)/bin/$(PLUGIN)-vst.so $(HM)$(DEST_VST)/
-	rm -rf $(HM)$(DEST_CLAP)/$(PLUGIN).clap
-	cp -r $(PLUGIN)/bin/$(PLUGIN).clap $(HM)$(DEST_CLAP)/
-
+	$(foreach var, $(PLUGIN), rm -rf $(HM)$(DEST_LV2)/$(var).lv2 ;)
+	$(foreach var, $(PLUGIN), cp -r $(var)/bin/$(var).lv2 $(HM)$(DEST_LV2)/ ;)	
+	$(foreach var, $(PLUGIN), rm -rf $(HM)$(DEST_VST)/$(var)-vst.so ;)
+	$(foreach var, $(PLUGIN), cp -r $(var)/bin/$(var)-vst.so $(HM)$(DEST_VST)/ ;)		
+	$(foreach var, $(PLUGIN), rm -rf $(HM)$(DEST_CLAP)/$(var).clap ;)
+	$(foreach var, $(PLUGIN), cp -r $(var)/bin/$(var).clap $(HM)$(DEST_CLAP)/ ;)
+	
 modduo: all
 modduox: all
 moddwarf: all
